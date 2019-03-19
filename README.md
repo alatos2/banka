@@ -4,3 +4,4 @@ Banka is a light-weight core banking application that powers banking operations 
 # Technologies
   - HyperText Mark-up Language (HTML) 
   - Cascade Style Sheet (CSS)
+  - Javascript
