@@ -9,7 +9,7 @@
 	<div class="logo">
 		<a href="../index.html"><img src="../images/logo.png" height="40" width="50"></a>
 	</div>
-	<form method="post" action="signin.html">
+	<!-- <form method="post" action="signin.html"> -->
 		<div class="box">
 			<h1 class="header-user">Sign Up for Free</h1>
 			<label class="label"><b class="label">First Name:</b></label><br>
@@ -27,12 +27,15 @@
 			<label><b>Confirm Password:</b></label><br>
 			<input type="password" name="txtCPassword" /><br><br>
 
-			<div><input type="submit" value="Sign Up"> </div>
+			<div><input type="submit" value="Sign Up"  id="btn-sign-up"> </div>
+
+			<div><input type="hidden" value="Sign In" id="btn-sign-in"></div>
 		  
 		</div> <!-- End Box -->
 	  
-	</form>
+	<!-- </form> -->
 
 	<p class="forgotPassword">Already have an account? <u><a href="signin.html">Sign In</a></u></p>
 </body>
 </html>
+<script src="../assets/js/main.js"></script>
