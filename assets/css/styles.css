@@ -432,3 +432,21 @@ u > a {
 
 .tr-transaction:nth-child(even){background-color: #2A334A}
 .tr-transaction:nth-child(odd){background-color: #0D1528}
+
+.admin-body{
+  background-color: #133040;
+}
+
+.box-admin{
+  background-color: #1E4A63;
+  width:350px;
+  border-radius:5px;
+  margin: 0px auto 0 auto;
+  padding:10px 10px 70px 10px;
+  box-shadow: 5px 5px 2px black;
+}
+
+.logger-admin{
+  margin: 0px auto 0 auto;
+  width:350px;
+}
