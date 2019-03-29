@@ -450,3 +450,11 @@ u > a {
   margin: 0px auto 0 auto;
   width:350px;
 }
+
+.logger-staff{
+  padding-left: 150px;
+}
+
+.login-staff{
+  background-color: #131B2B;
+}
