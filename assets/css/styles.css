@@ -429,3 +429,6 @@ u > a {
 .p-box-2{
   flex: 1;
 }
+
+.tr-transaction:nth-child(even){background-color: #2A334A}
+.tr-transaction:nth-child(odd){background-color: #0D1528}
