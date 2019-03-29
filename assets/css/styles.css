@@ -329,7 +329,7 @@ input[type=submit]:hover {
     .acct-box-gradient{
       background-color: #2A334A; /* For browsers that do not support gradients */
       background-image: linear-gradient(to bottom, #2A334A , #ED2A5A);
-      max-height: 300px;
+      /* max-height: 300px; */
     }
 
     .acct-box-trans{
@@ -406,4 +406,26 @@ input[type=submit]:hover {
 
 u > a {
   color:#f1c40f;
+}
+
+.logout {
+  color:#ffff;
+}
+
+@media(min-length: 768px){
+  .p-flex-main{
+    display: flex;
+  }
+
+}
+.p-flex-main{
+  display: flex;
+}
+
+.p-box-1{
+  flex: 1;
+}
+
+.p-box-2{
+  flex: 1;
 }
