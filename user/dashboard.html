@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Banka ::: Dashboard</title>
+	<link rel="icon" href="../images/logo.png">
+  <link rel="stylesheet" type="text/css" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+</head>
+<body id="bkg-body-login">
+  <div class="topnav" id="myTopnav">
+    <a href="../index.html"><img src="../images/logo.png" height="40" width="50"></a>
+    <a href="dashboard.html" class="active">Dashboard</a>
+    <a href="CreateAccount.html">Create Account</a>
+    <a href="TransactionHistory.html">Transaction History</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+  <div class="user-welcome-div"><b>Welcome Back, <span class="user-welcome">Teresh</span></b> | <a href="signin.html"
+    class="logout">Logout</a></div>
+  <div class="wrapper-user-dashboard">
+    <div class="user-box-1 acct-box-gradient">
+      <div class="header-user"><b>Account</b></div>
+      <div class="p-flex-main">
+        <div class="p-box-1">
+          <label class="acct-name">Account Holder</label>
+          <h3>Lamar P. Teresh</h3>
+          <label class="acct-bal">Your Balance</label>
+          <h3>#500,000.00</h3>
+          <label class="acct-no">Account Number</label>
+          <h3>01-5432-3467</h3>
+          <label class="acct-no">Account Type</label>
+          <h3>Savings Account</h3>
+        </div>
+        <div p-box-2>
+          <img src="../images/user-profile-pic.png" alt="prifole picture" width="200px" height="150px">
+        </div>
+      </div>
+    </div>
+    <div class="user-box-1 acct-box-trans">
+      <div class="header-user"><b>Recent Transactions</b></div>
+      <div class="transaction">
+        <div class="trans-box-1"><img src="../images/green-arrow-up.png"></div>
+        <div class="trans-box-1 trans-box-spacing">Credited</div>
+        <div class="trans-box-1 trans-box-spacing">#2,000.00</div>
+        <div class="trans-box-1 trans-box-spacing acct-date">28/02/2019</div>
+      </div>
+      <div class="transaction">
+        <div class="trans-box-1"><img src="../images/red-arrow-down.png"></div>
+        <div class="trans-box-1 trans-box-spacing">Debited</div>
+        <div class="trans-box-1 trans-box-spacing">#2,000.00</div>
+        <div class="trans-box-1 trans-box-spacing acct-date">28/02/2019</div>
+      </div>
+      <div class="transaction">
+        <div class="trans-box-1"><img src="../images/green-arrow-up.png"></div>
+        <div class="trans-box-1 trans-box-spacing">Credited</div>
+        <div class="trans-box-1 trans-box-spacing">#2,000,000.00</div>
+        <div class="trans-box-1 trans-box-spacing acct-date">28/02/2019</div>
+      </div>
+      <div class="transaction">
+        <div class="trans-box-1"><img src="../images/red-arrow-down.png"></div>
+        <div class="trans-box-1 trans-box-spacing">Debited</div>
+        <div class="trans-box-1 trans-box-spacing">#2,000.00</div>
+        <div class="trans-box-1 trans-box-spacing acct-date">28/02/2019</div>
+      </div>
+      <div class="transaction">
+        <div class="trans-box-1"><img src="../images/green-arrow-up.png"></div>
+        <div class="trans-box-1 trans-box-spacing">Credited</div>
+        <div class="trans-box-1 trans-box-spacing">#2,000.00</div>
+        <div class="trans-box-1 trans-box-spacing acct-date">28/02/2019</div>
+      </div>
+      <div class="transaction">
+        <div class="trans-box-1"><img src="../images/green-arrow-up.png"></div>
+        <div class="trans-box-1 trans-box-spacing">Credited</div>
+        <div class="trans-box-1 trans-box-spacing">#2,000.00</div>
+        <div class="trans-box-1 trans-box-spacing acct-date">28/02/2019</div>
+      </div>
+    </div>
+    <div class="user-box-1">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      <br>
+
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </div>
+  </div>
+
+<div class="footer">Andela Developer Challenge © 2019</div>
+</body>
+</html>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+</script>
