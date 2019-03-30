@@ -1,28 +1,24 @@
-<!DOCTYPE html>
 <html>
 <head>
-	<title>Banka ::: Sign In</title>
-	<link rel="icon" href="../images/logo.png">
-	<link rel="stylesheet" type="text/css" href="../assets/css/styles.css">
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<link href="../assets/css/styles.css" type="text/css" rel="stylesheet"/>
+<title>Banka::Sign In</title>
 </head>
-<body id="bkg-body-login">
-	<div class="logo">
-		<a href="../index.html"><img src="../images/logo.png" height="40" width="50"></a>
-	</div>
-	<!-- <form method="post" action="dashboard.html"> -->
-		<div class="box">
-			<h1 class="header-user">Sign In</h1>
-			<label><b>Email:</b></label><br>
-			<input type="text" name="txtEmail" /><br><br>
-
-			<label><b>Password:</b></label><br>
-			<input type="password" class="txtPassword" /><br><br>
-
-			<div><input type="submit" value="Sign In" id="btn-sign-in">  <a href="signup.html"><div class="signup">Sign Up</div></a> </div>
-		</div> <!-- End Box -->
-	<!-- </form> -->
-
-	<p class="forgotPassword">Forgot your password? <u><a>Click Here!</a></u></p>
+<body>
+<div id="wrapper">
+<div class="form_div">
+<div><a href="../index.html"><img src="../images/logo.png" height="40" width="50" title="Banka App"></a></div>
+<p class="form_label">Sign In Form</p>
+<!-- <form method="post" action=""> -->
+	<p><input type="text" name="txtEmail" placeholder="Email Address" /></p>
+	<p><input type="password" name="txtPassword" placeholder="Password" /></p>
+	<p><input type="submit" value="Sign In"  id="btn-sign-in"></p>
+	<p><button  id="btn-sign-up" class="signup-btn" onclick="window.location='signup.html';">Sign Up</button></p>
+	<!-- <div><input type="hidden" value="Sign In" id="btn-sign-in"></div> -->
+<!-- </form> -->
+</div>
+<p class="question">Forgot your password? <u><a href="#">Click here</a></u></p>
+</div>
 </body>
 </html>
 <script src="../assets/js/main.js"></script>
