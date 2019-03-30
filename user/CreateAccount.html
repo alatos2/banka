@@ -10,35 +10,27 @@
   <div class="topnav" id="myTopnav">
     <a href="../index.html"><img src="../images/logo.png" height="40" width="50"></a>
     <a href="dashboard.html">Dashboard</a>
-    <a href="CreateAccount.html" class="active">Create Account</a>
+    <a href="CreateAccount.html" class="active">Create Bank Account</a>
     <a href="TransactionHistory.html">Transaction History</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
       <i class="fa fa-bars"></i>
     </a>
   </div>
   <div class="user-welcome-div"><b>Welcome, <span class="user-welcome">Teresh</span></b> | <a href="signin.html" class="logout">Logout</a></div>
-  <form method="post" action="signin.html">
-    <div class="box">
-      <h1 class="header-user">Account Creation</h1>
-      <br>
-      <label class="label"><b class="label">Account Type:</b></label><br>
+  <br><br><br><br><br><br><br><br><br>
+  <div class="form_div mid">
+    <p class="form_label">Create Bank Account</p>
+    <!-- <form method="post" action=""> -->
       <select>
-        <option disabled="" selected="">=== select option ===</option>
-        <option>Savings</option>
-        <option>Current</option>
-      </select><br><br>
-      <label class="label"><b class="label">Account Number:</b></label><br>
-      <input type="text" name="txtFirstname" readonly/><br><br>
-
-      <div><input type="submit" value="Create Account"> </div>
-      
-    </div> <!-- End Box -->
-
-    <div></div>
-    
-  </form>
-
-
+          <option disabled="" selected="">Bank Account Type</option>
+          <option>Savings</option>
+          <option>Current</option>
+        </select>
+      <p><input type="submit" value="Create"  id="btn-sign-in"></p>
+      <!-- <div><input type="hidden" value="Sign In" id="btn-sign-in"></div> -->
+    <!-- </form> -->
+</div>
+<br><br><br><br><br><br><br><br><br>
 <div class="footer">Andela Developer Challenge © 2019</div>
 </body>
 </html>
