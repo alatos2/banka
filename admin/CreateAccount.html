@@ -6,50 +6,38 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="../assets/css/styles.css">
 </head>
-<body class="admin-body">
-<div id="menu">
-  <div class="header">
-    <a href="#default" class="logo">Banka App</a>
-    <div class="header-right">
-      <a href="dashboard.html">Home</a>
-      <a class="active" href="CreateAccount.html">Create Account</a>
-      <a href="signin.html">Logout</a>
-    </div>
-  </div>
+<body><div class="topnav" id="myTopnav">
+  <a href="../index.html"><img src="../images/logo.png" height="40" width="50"></a>
+  <a href="dashboard.html">Dashboard</a>
+  <a href="CreateAccount.html" class="active">Create Account</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
 </div>
 
-<br><br>
-<div class="logger-admin"><b>Welcome Alabi</b></div><br>
-
-<form method="post" action="">
-    <div class="box-admin">
-      <br>
-      <label class="label"><b class="label">Account:</b></label><br>
+<div class="user-welcome-div"><b>Welcome, <span class="user-welcome">Teresh</span></b> | <a href="signin.html"
+  class="logout">Logout</a></div><br>
+<div id="wrapper">
+<div class="form_div">
+<p class="form_label">Create Account</p>
+<!-- <form method="post" action=""> -->
+<p>
       <select>
-        <option disabled="" selected="">=== choose option ===</option>
+        <option disabled="" selected="">Account Type</option>
         <option>Admin</option>
         <option>Staff</option>
-      </select><br><br>
-
-      <label class="label"><b class="label">First Name:</b></label><br>
-      <input type="text" name="txtFirstname" /><br><br>
-
-      <label><b>Last Name:</b></label><br>
-      <input type="text" name="txtLastname" /><br><br>
-
-      <label><b>Email:</b></label><br>
-      <input type="text" name="txtEmail" /><br><br>
-
-      <label><b>Password:</b></label><br>
-      <input type="password" name="txtPassword" /><br><br>
-
-      <div><input type="submit" value="Create Account"> </div>
-      
-    </div> <!-- End Box -->
-    
-  </form>
-
+      </select></p>
+	<p><input type="text" name="txtFirstname" placeholder="First Name" /></p>
+	<p><input type="text" name="txtLastname" placeholder="Last Name" /></p>
+	<p><input type="text" name="txtEmail" placeholder="Email Address" /></p>
+	<p><input type="password" name="txtPassword" placeholder="Password" /></p>
+	<p><input type="submit" value="create"  id="btn-sign-in"></p>
+	<!-- <div><input type="hidden" value="Sign In" id="btn-sign-in"></div> -->
+<!-- </form> -->
+</div>
+</div>
+<br><br><br><br><br>
 <div class="footer">Andela Developer Challenge © 2019</div>
-
+<script src="../assets/js/main.js"></script>
 </body>
 </html>
