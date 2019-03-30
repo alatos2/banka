@@ -3,6 +3,12 @@
         location.href = "dashboard.html";
     };
 
-    document.getElementById("btn-sign-up").onclick = function () {
-        location.href = "signin.html";
-    };
+    function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      } else {
+        x.className = "topnav";
+      }
+    }
+
