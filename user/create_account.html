@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dashboard::Create Bank Account</title>
+    <link rel="icon" href="../images/logo.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="../assets/css/styles.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+      <header id="page-header">
+            <div>
+                  <div style="padding-left: 100px;">
+                    <div class="marginalize"><a class="navbar-brand" href="dashboard.html">Banka App</a></div>
+                  </div>
+          <div class="topnav push-left" id="myTopnav">
+            <a href="dashboard.html">Home</a>
+            <a href="create_account.html" class="active">Create Bank Account</a>
+            <a href="transaction_history.html">Transaction History</a>
+            <a href="signin.html">Logout</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+              <i class="fa fa-bars"></i>
+            </a>
+        </div>
+
+            <div id="page-subheader"  class="centralize">
+                <div>
+                    <input placeholder="Search..." type="text" name="q" value="" />
+                    <h2>Dashboard</h2>
+                </div>
+            </div>
+        </header>
+
+        <section class="centralize">
+        	Welcome <b class="username">Rashford</b> | Logged in as User
+        		<div class="box-1">
+              <div class="form_div mid">
+                <p><b>Select Bank Account Type</b></p>
+                <!-- <form method="post" action=""> -->
+                  <select class="txtSelect">
+                      <option disabled="" selected="">Bank Account Type</option>
+                      <option>Savings</option>
+                      <option>Current</option>
+                    </select>
+                  <p><input type="submit" value="Create"  id="btn-sign-in"></p>
+                  <!-- <div><input type="hidden" value="Sign In" id="btn-sign-in"></div> -->
+                <!-- </form> -->
+            </div>
+        		</div>
+            <div>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </div>
+        </section>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+ <div class="footer">Andela Developer Challenge © 2019</div>
+
+</body>
+</html>
+
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+</script>
