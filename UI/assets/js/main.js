@@ -1,34 +1,37 @@
-// const activate = document.getElementById("activate");
 
-// activate.addEventListener("click", () => {
-// 	const answer = prompt("Do you want to activate this account? y/n");
-// 	if(answer === 'y' || answer === 'yes'){
-// 		alert("Account activated.");
-// 	} else {
-// 		alert("Account not activated.");
-// 	}
+    //get modal element
+    const modal = document.getElementById("simpleModal");
+    //get the open modal btn
+    const modalBtn = document.getElementById("modalBtn");
+    // get close button
+    const closeBtn = document.getElementsByClassName("closeBtn")[0];
 
-// });
+    const openModal = () => {
+      modal.style.display = "block";
+    }
 
-// const deactivate = document.getElementById("deactivate");
+    const closeModal = () => {
+      modal.style.display = "none";
+    }
 
-// deactivate.addEventListener("click", () => {
-// 	const answer = prompt("Do you want to deactivate this account? y/n");
-// 	if(answer === 'y' || answer === 'yes'){
-// 		alert("Account deactivated.");
-// 	} else {
-// 		alert("Account not deactivated.");
-// 	}
-// });
+    const clickOutside = (e) => {
+      if(e.target == modal){
+        modal.style.display = "none";
+      }
+    }
+    
+    //click event
+    modalBtn.addEventListener("click", openModal);
+    closeBtn.addEventListener("click", closeModal);
+    window.addEventListener("click", clickOutside)
 
-// const delete = document.getElementById("delete");
 
-// delete.addEventListener("click", () => {
-// 	const answer = prompt("Do you want to delete this account? y/n");
-// 	if(answer === 'y' || answer === 'yes'){
-// 		alert("Account deleted.");
-// 	} else {
-// 		alert("Account not deleted.");
-// 	}
-// });
-
+    // for user, staff and admin page menus -> responsiveness
+    function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      } else {
+        x.className = "topnav";
+      }
+    }

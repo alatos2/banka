@@ -1,38 +1,26 @@
-<!DOCTYPE html>
 <html>
 <head>
-	<title>Banka ::: Sign Up</title>
-	<link rel="icon" href="../images/logo.png">
-	<link rel="stylesheet" type="text/css" href="../assets/css/styles.css">
+<title>Banka::User Signup</title>
+<link rel="icon" href="../images/logo.png">
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<link href="../assets/css/extras.css" type="text/css" rel="stylesheet"/>
+
 </head>
-<body id="bkg-body-login">
-	<div class="logo">
-		<a href="../index.html"><img src="../images/logo.png" height="40" width="50"></a>
-	</div>
-	<form method="post" action="signin.html">
-		<div class="box">
-			<h1 class="header-user">Sign Up for Free</h1>
-			<label class="label"><b class="label">First Name:</b></label><br>
-			<input type="text" name="txtFirstname" /><br><br>
-
-			<label><b>Last Name:</b></label><br>
-			<input type="text" name="txtLastname" /><br><br>
-
-			<label><b>Email:</b></label><br>
-			<input type="text" name="txtEmail" /><br><br>
-
-			<label><b>Password:</b></label><br>
-			<input type="password" name="txtPassword" /><br><br>
-
-			<label><b>Confirm Password:</b></label><br>
-			<input type="password" name="txtCPassword" /><br><br>
-
-			<div><input type="submit" value="Sign Up"> </div>
-		  
-		</div> <!-- End Box -->
-	  
-	</form>
-
-	<p class="forgotPassword">Already have an account? <u><a href="signin.html">Sign In</a></u></p>
+<body>
+<div id="wrapper">
+<div class="form_div">
+<div><a href="../index.html"><img src="../images/logo.png" height="40" width="50" title="Banka App"></a></div>
+<p class="form_label">USER SIGNUP FORM</p>
+<!-- <form method="post" action=""> -->
+	<p><input type="text" name="txtFirstname" placeholder="First Name" /></p>
+	<p><input type="text" name="txtLastname" placeholder="Last Name" /></p>
+	<p><input type="text" name="txtEmail" placeholder="Email Address" /></p>
+	<p><input type="password" name="txtPassword" placeholder="Password" /></p>
+	<p><input type="password" name="txtCPassword" placeholder="Confirm Password" /></p>
+	<p><input type="submit" value="Sign Up"   onclick="window.location='signin.html';"></p>
+<!-- </form> -->
+</div>
+<p class="question">Already have an account? <u><a href="signin.html">Sign In</a></u> | <a href="../index.html">Homepage</a></p>
+</div>
 </body>
 </html>
