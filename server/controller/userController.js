@@ -1,4 +1,3 @@
-import moment from 'moment';
 import uuid from 'uuid';
 import dummyData from '../model/dummyData.js';
 import Utils from '../helpers/commons.js';

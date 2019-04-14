@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "nyc mocha --timeout 10000 ./server/_test_/account.test.js --require @babel/register --exit",
-    "start:dev": "set DEBUG=http & nodemon --exec babel-node ./bin/www.js"
+    "start:dev": "set DEBUG=http & nodemon --exec babel-node ./bin/www.js",
+    "build": "npm run clean && npm run build-babel"
   },
   "repository": {
     "type": "git",
@@ -42,6 +43,7 @@
     "@babel/preset-env": "^7.4.3",
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
+    "coveralls": "^3.0.3",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.17.0",
