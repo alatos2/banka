@@ -1,6 +1,6 @@
 # Banka
 
-[![Build Status](https://travis-ci.org/alatos2/banka.svg?branch=develop)](https://travis-ci.org/alatos2/banka) [![Maintainability](https://api.codeclimate.com/v1/badges/5701f720c71530a9db12/maintainability)](https://codeclimate.com/github/alatos2/banka/maintainability) [![Coverage Status](https://coveralls.io/repos/github/alatos2/banka/badge.svg?branch=develop)](https://coveralls.io/github/alatos2/banka?branch=develop)
+[![Build Status](https://travis-ci.org/alatos2/banka.svg?branch=develop)](https://travis-ci.org/alatos2/banka) [![Coverage Status](https://coveralls.io/repos/github/alatos2/banka/badge.svg?branch=develop)](https://coveralls.io/github/alatos2/banka?branch=develop)
 
 ## Table of Contents
 
