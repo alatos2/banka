@@ -12,31 +12,7 @@ describe('Testing User Controller', () => {
   //   done();
   // });
 
-  it('should register a new user when all the parameters are given', (done) => {
-    request(app)
-      .post('/api/v1/auth/signup')
-      .send({
-        id: uuid.v4(),
-        firstName: 'mike',
-        lastName: 'umanah',
-        email: 'test@test.com',
-        password: 'password',
-        type: 'User',
-        isAdmin: false,
-      })
-      .set('Accept', 'application/json')
-      .expect('Content-Type', /json/)
-      .expect(201)
-      .end((err, res) => {
-        if (err) throw err;
-        else {
-          const responseData = JSON.parse(res.text);
-          expect(responseData).to.be.a('object');
-        }
-
-        done();
-      });
-  });
+ 
 
   it('should not register when email is missing', (done) => {
     request(app)
