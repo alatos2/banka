@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import dummyData from '../model/dummyData';
 
 const secret = 'scandali';
 
@@ -78,20 +79,49 @@ const Utils = {
     return foundEmail;
   },
   /**
+   * @description - search by account number
+   * @param {int} accountNumber
+   * @param {object} data
+   * @returns {object} foundAccount
+   */
+  searchByAccount(searchAccount, data) {
+    const foundAccount = data.find(eachData => eachData.accountNumber === searchAccount);
+    return foundAccount;
+  },
+  /**
+  * @method getOne
+  * @description returns the account details if it the account number exists
+  * @param {*} accountNumber - The accountNumber
+  * @returns {object} the account details
+  */
+  getOne(accountNumber) {
+    let accountExists = false;
+    let accountDetails;
+    let accountIndex;
+    dummyData.accounts.forEach((account) => {
+      if (account.accountNumber === accountNumber) {
+        accountExists = true;
+        accountDetails = account;
+        accountIndex = dummyData.accounts.indexOf(account);
+      }
+    });
+    return { accountDetails, accountExists, accountIndex };
+  },
+  /**
    * @description - remove null key from ab object
    * @param {object}
    * @returns {object}
-   */
-  stripNull(obj) {
-    let cleanObj = {};
+  //  */
+  // stripNull(obj) {
+  //   let cleanObj = {};
 
-    Object.keys(obj).forEach((val) => {
-      const newVal = obj[val];
-      cleanObj = newVal ? { ...cleanObj, [val]: newVal } : cleanObj;
-    });
+  //   Object.keys(obj).forEach((val) => {
+  //     const newVal = obj[val];
+  //     cleanObj = newVal ? { ...cleanObj, [val]: newVal } : cleanObj;
+  //   });
 
-    return cleanObj;
-  },
+  //   return cleanObj;
+  // },
 };
 
 export default Utils;

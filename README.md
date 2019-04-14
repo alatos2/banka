@@ -53,7 +53,6 @@ Pivotal Tracker Stories can found here [Pivotal Tracker](https://www.pivotaltrac
 ## Acknowledgements
 
 * [Andela](https://andela.com/)
-* [Icons8](https://icons8.com/)
 
 ## Author
 
