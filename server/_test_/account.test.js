@@ -55,43 +55,6 @@ describe('Testing Account Controller', () => {
       });
   });
 
-  it('should not create account when authorization token is invalid', (done) => {
-    chai.request(app)
-        .post('/api/v1/accounts')
-        .set('Authorization', '555555')
-        .send(accountType)
-        .end((error, response) => {
-          expect(response).to.have.status(401);
-          expect(response.body.status).to.equal(401);
-          expect(response.body.error).to.equal('Invalid token!');
-          done();
-        });
-    });
-
-  it('should create a new account when all the parameters are given', (done) => {
-    request(app)
-      .post('/api/v1/accounts')
-      .set('Authorization', token)
-      .send({accountType})
-      .expect(201)
-      .end((err, res) => {
-        if (err) throw err;
-        else {
-            expect(res.body).to.be.an('object');
-            // expect(res).to.have.status(201);
-            // expect(res.body.status).to.equal(201);
-            expect(res.body.data).to.be.a('object');
-            expect(res.body.data).to.have.property('accountNumber');
-            expect(res.body.data).to.have.property('firstName');
-            expect(res.body.data).to.have.property('lastName');
-            expect(res.body.data).to.have.property('email');
-            expect(res.body.data).to.have.property('type');
-            expect(res.body.data).to.have.property('openingBalance');
-        }
-        done();
-      });
-  });
-
   it('should not create an account when the account type is missing', (done) => {
     request(app)
       .post('/api/v1/accounts')
