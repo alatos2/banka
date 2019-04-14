@@ -1,3 +1,10 @@
+
+[![Build Status](https://travis-ci.org/alatos2/banka.svg?branch=develop)](https://travis-ci.org/alatos2/banka)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/5701f720c71530a9db12/maintainability)](https://codeclimate.com/github/alatos2/banka/maintainability)
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/5701f720c71530a9db12/test_coverage)](https://codeclimate.com/github/alatos2/banka/test_coverage)
+
 # Banka
 
 ## Table of Contents
