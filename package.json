@@ -6,7 +6,8 @@
   "scripts": {
     "test": "nyc mocha --timeout 10000 ./server/_test_/*.js --require @babel/register --exit",
     "start:dev": "set DEBUG=http & nodemon --exec babel-node ./bin/www.js",
-    "build": "npm run clean && npm run build-babel"
+    "build": "npm run clean && npm run build-babel",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
