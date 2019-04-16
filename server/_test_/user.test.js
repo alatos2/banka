@@ -12,8 +12,6 @@ describe('Testing User Controller', () => {
   //   done();
   // });
 
- 
-
   it('should not register when email is missing', (done) => {
     request(app)
       .post('/api/v1/auth/signup')
