@@ -21,21 +21,7 @@ class AccountController {
     const { type } = req.body;
     const {
       id, firstName, lastName, email,
-    } = req.body;
-
-    if (!type || type.trim().length === 0) {
-      return res.status(400).json({
-        status: 400,
-        error: 'No account type selected',
-      });
-    }
-
-    if (type !== 'savings' && type !== 'current') {
-      return res.status(400).json({
-        status: 400,
-        error: 'Account Type must be either savings or current',
-      });
-    }
+    } = req.decode;
 
     if (!utils.generateAccountNumber(dummyData.accounts)) {
       return res.status(401).json({
@@ -84,20 +70,6 @@ class AccountController {
     accountNumber = parseInt(accountNumber, 10);
 
     const found = utils.searchByAccount(accountNumber, dummyData.accounts);
-
-    if (!status || status.trim().length === 0) {
-      return res.status(400).json({
-        status: 400,
-        error: 'Status not selected',
-      });
-    }
-
-    if (status !== 'activate' && status !== 'deactivate') {
-      return res.status(400).json({
-        status: 400,
-        error: 'Wrong status selected',
-      });
-    }
 
     if (!found) {
       return res.status(400).json({

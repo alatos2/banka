@@ -1,8 +1,9 @@
 import uuid from 'uuid';
 import moment from 'moment';
-import transactions from '../model/transaction';
+import account from '../model/accounts';
 import utils from '../helpers/commons';
 import dummyData from '../model/dummyData';
+import transaction from '../model/transaction';
 /**
  * @class TransactionController
  * @description Contains controller methods for each transaction related endpoint
@@ -17,38 +18,30 @@ class TransactionController {
   * @returns {object} JSON API Response
   */
   creditAccount(req, res) {
-    const { accountDetails, accountExists } = utils.getOne(parseInt(req.params.accountNumber, 10));
-
-    const { amount } = req.body;
-
-    const type = 'credit';
-
-    if(!accountExists) {
-      return res.status(400).json({
-        status: 400,
-        error: 'Account number does not exists',
-      });
-    };
-
-    if(!amount){
-      return res.status(400).json({
-        status: 400,
-        error: 'Amount cannot be left empty',
-      });
-    };
+      let { amount } = req.body;
+      let { accountNumber } = req.params;
+      //const { id } = req.decode;
+      accountNumber = parseInt(accountNumber, 10);
+      amount = parseFloat(amount);
+  
+      const foundAccount = utils.searchByAccount(accountNumber, dummyData.accounts);
+  
+      if (!foundAccount) {
+        return res.status(400).json({
+          status: 400,
+          error: 'Account number does not exists',
+        });
+      }
 
     const transaction = {
       transactionId: uuid.v4(),
       createdOn: moment().format(),
-      type,
+      type: 'credit',
       accountNumber: parseInt(req.params.accountNumber, 10),
       cashier: dummyData.transactions.length + 1,
       amount: parseFloat(req.body.amount),
-      oldBalance: accountDetails.balance,
-      newBalance: type === 'credit' ? parseFloat((accountDetails
-        .balance + parseFloat(req.body.amount))
-        .toFixed(2)) : parseFloat((accountDetails
-        .balance - parseFloat(req.body.amount)).toFixed(2)),
+      oldBalance: parseFloat(foundAccount.balance).toFixed(2),
+      newBalance: parseFloat(foundAccount.balance) + parseFloat(req.body.amount)
     };
 
       if (transaction.newBalance < 0) 
@@ -59,7 +52,7 @@ class TransactionController {
         });
       }
 
-    accountDetails.balance = transaction.newBalance;
+    foundAccount.balance = transaction.newBalance;
     dummyData.transactions.push(transaction);
 
     return res.status(200).json({
@@ -83,39 +76,31 @@ class TransactionController {
   * @returns {object} JSON API Response
   */
   debitAccount(req, res) {
-    const { accountDetails, accountExists } = utils.getOne(parseInt(req.params.accountNumber, 10));
+    let { amount } = req.body;
+    let { accountNumber } = req.params;
+    //const { id } = req.decode;
+    accountNumber = parseInt(accountNumber, 10);
+    amount = parseFloat(amount);
 
-    const { amount } = req.body;
+    const foundAccount = utils.searchByAccount(accountNumber, dummyData.accounts);
 
-    const type = 'debit';
-
-    if(!accountExists) {
+    if (!foundAccount) {
       return res.status(400).json({
         status: 400,
         error: 'Account number does not exists',
       });
-    };
+    }
 
-    if(!amount){
-      return res.status(400).json({
-        status: 400,
-        error: 'Amount cannot be left empty',
-      });
-    };
-
-    const transaction = {
-      transactionId: uuid.v4(),
-      createdOn: moment().format(),
-      type,
-      accountNumber: parseInt(req.params.accountNumber, 10),
-      cashier: dummyData.transactions.length + 1,
-      amount: parseFloat(req.body.amount),
-      oldBalance: accountDetails.balance,
-      newBalance: type === 'credit' ? parseFloat((accountDetails
-        .balance + parseFloat(req.body.amount))
-        .toFixed(2)) : parseFloat((accountDetails
-        .balance - parseFloat(req.body.amount)).toFixed(2)),
-    };
+  const transaction = {
+    transactionId: uuid.v4(),
+    createdOn: moment().format(),
+    type: 'debit',
+    accountNumber: parseInt(req.params.accountNumber, 10),
+    cashier: dummyData.transactions.length + 1,
+    amount: parseFloat(req.body.amount),
+    oldBalance: parseFloat(foundAccount.balance).toFixed(2),
+    newBalance: parseFloat(foundAccount.balance) - parseFloat(req.body.amount)
+  };
 
       if (transaction.newBalance < 0) 
       { 
@@ -125,7 +110,7 @@ class TransactionController {
         });
       }
 
-    accountDetails.balance = transaction.newBalance;
+    foundAccount.balance = transaction.newBalance;
     dummyData.transactions.push(transaction);
 
     return res.status(201).json({

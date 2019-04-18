@@ -1,87 +1,115 @@
-import chai from 'chai';
 import chaiHttp from 'chai-http';
+import chai, { expect } from 'chai';
+import request from 'supertest';
+import jwt from 'jsonwebtoken';
 import app from '../../app';
 
 chai.should();
 
+const SECRET = 'andela';
+
 chai.use(chaiHttp);
 
-const apiEndPoint = '/api/v1/';
-const userEndPoint = `${apiEndPoint}auth/`;
-const randomToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZmlyc3RuYW1lIjoiQ2h1a3d1ZGkiLCJsYXN0bmFtZSI6Ik5nd29iaWEiLCJvdGhlcm5hbWUiOiJNaWtlIiwiZW1haWwiOiJuZ3dvYmlhY2h1a3d1ZGlAZ21haWwuY29tIiwicGhvbmVOdW1iZXIiOiIwNzA2MDg1NDc3MyIsInBhc3Nwb3J0VXJsIjoiaHR0cHM6Ly9nbWFpbC5jb20vcGFzc3BvcnQiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE1NTExNzYzMzYsImV4cCI6MTU1MTE3OTkzNn0.ewoovxp-otFQ58E2Ez7wWTfGyFwoeJX7CY_nBL6r06c';
+const API_VERSION = '/api/v1';
+const testUser = {
+  id: 90,
+  firstName: 'steve',
+  lastName: 'cannon',
+  email: 'testing@testers.com',
+  password: 'delapassword',
+  confirmPassword: 'delapassword',
+};
+const transactionUser = {
+  amount: 555555,
+};
+const accountNumber = 2039956566;
+const userToken = jwt.sign(testUser, SECRET, { expiresIn: '24h' });
 
-describe('Transaction Tests', () => {
+describe('Testing Transaction Controller', () => {
+  /**
+     * Sign in user to generate user token before test
+     */
+  before('transaction operations can begin when user have signed up', (done) => {
+    chai.request(app)
+      .post(`${API_VERSION}/auth/signup`)
+      .send(testUser)
+      .end((error, response) => {
+        expect(response.body.status).to.equal(201);
+        done();
+      });
+  });
 
-    it('Should return 400 if amount isn\'t specified', (done) => {
+  describe('Testing credit account controller', () => {
+    /**
+       * Test the POST /transactions/<account-number>/credit endpoint
+       */
+    const transactionUrl = `${API_VERSION}/transactions/${accountNumber}/credit`;
+
+    it('should not create account when authorization is undefined', (done) => {
       chai.request(app)
-        .post(`${apiEndPoint}transactions/5823642528/credit`)
+        .post(transactionUrl)
         .send({})
-        .end((err, res) => {
-          res.should.have.status(400);
-          res.body.should.be.a('object');
-          res.body.should.have.property('error');
+        .end((error, response) => {
+          // eslint-disable-next-line no-unused-expressions
+          expect(response.headers.authorization).to.be.undefined;
+          done();
+        });
+    });
+
+    it('should not credit account when authorization token is invalid', (done) => {
+      chai.request(app)
+        .post(transactionUrl)
+        .set('Authorization', '555555')
+        .send(transactionUser)
+        .end((error, response) => {
+          expect(response).to.have.status(401);
+          expect(response.body.status).to.equal(401);
+          expect(response.body.error).to.equal('Invalid token!');
+          done();
+        });
+    });
+  });
+
+  describe('Testing debit account controller', () => {
+    /**
+       * Test the POST /transactions/<account-number>/debit endpoint
+       */
+    const transactionUrl = `${API_VERSION}/transactions/${accountNumber}/debit`;
+
+    it('should not create account when authorization is undefined', (done) => {
+      chai.request(app)
+        .post(transactionUrl)
+        .send({})
+        .end((error, response) => {
+          // eslint-disable-next-line no-unused-expressions
+          expect(response.headers.authorization).to.be.undefined;
+          done();
+        });
+    });
+
+    it('should not credit account when authorization token is invalid', (done) => {
+      chai.request(app)
+        .post(transactionUrl)
+        .set('Authorization', '555555')
+        .send(transactionUser)
+        .end((error, response) => {
+          expect(response).to.have.status(401);
+          expect(response.body.status).to.equal(401);
+          expect(response.body.error).to.equal('Invalid token!');
           done();
         });
     });
 
     it('Should return 400 if non integer characters are provided', (done) => {
       chai.request(app)
-        .post(`${apiEndPoint}transactions/5823642528/credit`)
+        .post('/api/v1/transactions/5823642528/debit')
         .send({ amount: 'do521' })
         .end((err, res) => {
-          res.should.have.status(400);
+          res.should.have.status(401);
           res.body.should.be.a('object');
           res.body.should.have.property('error');
           done();
         });
     });
-
-    it('Should return a 400 error if there isn\t sufficient funds in the account to debit', (done) => {
-      const login = {
-        email: 'lampard@gmail.com',
-        password: 'password',
-      };
-
-      chai.request(app)
-        .post(`${userEndPoint}signin`)
-        .send(login)
-        .end((loginErr, loginRes) => {
-          const token = `Bearer ${loginRes.body.data.token}`;
-
-          chai.request(app)
-            .post(`${apiEndPoint}transactions/5823642528/debit`)
-            .set('Authorization', token)
-            .send({ amount: 200000000 })
-            .end((err, res) => {
-              res.should.have.status(400);
-              res.body.should.be.a('object');
-              res.body.should.have.property('error');
-              done();
-            });
-        });
-    });
-
-    it('Should return 400 if amount isn\'t specified', (done) => {
-      chai.request(app)
-        .post(`${apiEndPoint}transactions/5823642528/debit`)
-        .send({})
-        .end((err, res) => {
-          res.should.have.status(400);
-          res.body.should.be.a('object');
-          res.body.should.have.property('error');
-          done();
-        });
-    });
-
-    it('Should return 400 if non integer characters are provided', (done) => {
-      chai.request(app)
-        .post(`${apiEndPoint}transactions/5823642528/debit`)
-        .send({ amount: 'do521' })
-        .end((err, res) => {
-          res.should.have.status(400);
-          res.body.should.be.a('object');
-          res.body.should.have.property('error');
-          done();
-        });
-    });
+  });
 });
