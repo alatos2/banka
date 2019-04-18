@@ -1,6 +1,6 @@
 import express from 'express';
 import logger from 'morgan';
-import route from './server/route';
+import route from './route';
 
 const app = express();
 

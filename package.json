@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "nyc mocha --timeout 10000 ./server/_test_/*.js --require @babel/register --exit",
-    "start:dev": "set DEBUG=http & nodemon --exec babel-node ./bin/server.js",
-    "start": "npm run build && node dist/app.js",
+    "start:dev": "set DEBUG=http & nodemon --exec babel-node ./server/bin/server.js",
+    "start": "npm run build && node dist/bin/server.js",
     "build": "babel server -d dist",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
