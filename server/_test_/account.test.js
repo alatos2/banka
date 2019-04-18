@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 import chai, { expect } from 'chai';
 import app from '../../app';
 
-const secret = 'scandali';
+const secret = 'andela';
 chai.use(chaiHttp);
 
 const API_VERSION = '/api/v1';
@@ -59,7 +59,7 @@ describe('Testing Account Controller', () => {
     request(app)
       .post('/api/v1/accounts')
       .set('Authorization', token)
-      .send({ type: ''})
+      .send({ })
       .end((err, res) => {
         if (err) throw err;
         else {

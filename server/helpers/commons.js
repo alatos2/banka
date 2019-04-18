@@ -1,73 +1,71 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
 import dummyData from '../model/dummyData';
 
-const secret = 'scandali';
+dotenv.config();
 
-const Utils = {
+const SECRET = 'andela';
+
+const helpers = {
   /**
    * @description - generates a new id
    * @param {object} data
    * @returns {int} id
    */
-  // getNextId(data) {
-  //   const lastId = data[data.length - 1].id;
-  //   return lastId + 1;
-  // },
-  /**
-   * @description - generates a new id
-   * @param {object} data
-   * @returns {int} id
-   */
-  getNextTransactionId(data) {
-    const lastId = data[data.length - 1].transactionId;
+  getNextId(data) {
+    const lastId = data[data.length - 1].id;
     return lastId + 1;
   },
+
   /**
    * @description - generates a new account number
    * @param {object} data
-   * @returns {int} id
+   * @returns {int} accountNumber
    */
   generateAccountNumber(data) {
-    const lastAcc = data[data.length - 1].accountNumber;
-    return lastAcc + 100;
+    const newAccountNumber = Math.floor(Math.random() * 9000000) + 2550000000;
+    const foundAccount = data.find(eachData => eachData.accountNumber === newAccountNumber);
+    if (!foundAccount) {
+      return newAccountNumber;
+    }
+    return 0;
   },
-  /**
-   * @description - validate password by comparing password with hash password
-   * @param {string} password
-   * @param {string} hashpassword
-   * @returns {boolean} boolean to show if password match or not
-   */
-  validatePassword(password, userPassword) {
-    return bcrypt.compareSync(password, userPassword);
-  },
+
   /**
    * @description - encypt password
    * @param {object} password
-   * @returns {object} hashpassword
+   * @returns {object} hashPassword
    */
+
   hashPassword(password) {
-    const salt = bcrypt.genSaltSync(15);
-    const pwd = bcrypt.hashSync(password, salt);
-    return pwd;
+    const salt = bcrypt.genSaltSync(10);
+    const hashedPassword = bcrypt.hashSync(password, salt);
+    return hashedPassword;
   },
+
   /**
-   * @description - signs token
-   * @param {object} payload
+   * @description - validate password
+   * @param {string} password
+   * @param {string} hashPassword
+   * @returns {boolean} boolean
    */
-  jwtSigner(payload) {
-    return jwt.sign(payload, secret, { expiresIn: '24h' });
+  validatePassword(password, hashPassword) {
+    return bcrypt.compareSync(password, hashPassword);
   },
+
   /**
-  * @description - validates email
-  * @param {string} emaIl;
-  * @returns {Boolean} isValid
-  */
-  emailValidator(email) {
-    const reg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const isValid = reg.test(email);
-    return isValid;
+   * @description - assigns token
+   * @param {object} payload
+   * @returns {object} token
+   */
+  jwtToken(payload) {
+    const token = jwt.sign(payload, SECRET, {
+      expiresIn: '24h', // expires in 24 hours
+    });
+    return token;
   },
+
   /**
    * @description - search by email
    * @param {string} email
@@ -78,6 +76,33 @@ const Utils = {
     const foundEmail = data.find(eachData => eachData.email === searchEmail);
     return foundEmail;
   },
+
+  /**
+   * @description - search by id
+   * @param {int} id
+   * @param {object} data
+   * @returns {object} foundId
+   */
+  searchById(searchId, data) {
+    const foundId = data.find(eachData => eachData.id === searchId);
+    return foundId;
+  },  
+  
+  getOne(accountNumber) {
+    let accountExists = false;
+    let accountDetails;
+    let accountIndex;
+    dummyData.accounts.forEach((account) => {
+      if (account.accountNumber === accountNumber) {
+        accountExists = true;
+        accountDetails = account;
+        balance = account.balance;
+        accountIndex = dummyData.accounts.indexOf(account);
+      }
+    });
+    return { accountDetails, accountExists, balance, accountIndex };
+  },
+
   /**
    * @description - search by account number
    * @param {int} accountNumber
@@ -89,39 +114,15 @@ const Utils = {
     return foundAccount;
   },
   /**
-  * @method getOne
-  * @description returns the account details if it the account number exists
-  * @param {*} accountNumber - The accountNumber
-  * @returns {object} the account details
-  */
-  getOne(accountNumber) {
-    let accountExists = false;
-    let accountDetails;
-    let accountIndex;
-    dummyData.accounts.forEach((account) => {
-      if (account.accountNumber === accountNumber) {
-        accountExists = true;
-        accountDetails = account;
-        accountIndex = dummyData.accounts.indexOf(account);
-      }
-    });
-    return { accountDetails, accountExists, accountIndex };
+   * @description - validates email
+   * @param {string} emaIl;
+   * @returns {Boolean} isValid
+   */
+  emailValidator(email) {
+    const reg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isValid = reg.test(email);
+    return isValid;
   },
-  /**
-   * @description - remove null key from ab object
-   * @param {object}
-   * @returns {object}
-  //  */
-  // stripNull(obj) {
-  //   let cleanObj = {};
-
-  //   Object.keys(obj).forEach((val) => {
-  //     const newVal = obj[val];
-  //     cleanObj = newVal ? { ...cleanObj, [val]: newVal } : cleanObj;
-  //   });
-
-  //   return cleanObj;
-  // },
 };
 
-export default Utils;
+export default helpers;
