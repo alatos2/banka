@@ -4,7 +4,7 @@ import statusCodes from '../helpers/statusCodes';
 /**
  * @class AccountValidate
  */
-class AccountValidate {
+class AccountValidate    {
   static validateCreate(request, response, next) {
     const { type } = request.body;
 
